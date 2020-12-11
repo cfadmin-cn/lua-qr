@@ -30,6 +30,8 @@
 
 	* qr.toJSON(filename, text) - Write the content of `text` into the file of `filename` in JSON format; if writing is successful, return `true`, otherwise it will return: false、 errorinfo;
 
+	Please refer to the `test.lua` file for specific sample codes.
+
 ## LICENSE
 
 	[MIT-LICENSE](https://github.com/CandyMi/lua-qr/blob/master/LICENSE)
