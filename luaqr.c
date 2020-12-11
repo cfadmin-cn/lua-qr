@@ -95,8 +95,7 @@ static int lwriteBMP(lua_State *L) {
 		return luaL_error(L, "[ERROR]: Can't create QR object.");
 
 	int wsize = 0;
-	//两个5分别表示：像素之间的距离和二维码图片的放大倍数，范围都是1-16
-	qr_byte_t *buffer = qrSymbolToBMP(qr, 5, 5, &wsize);
+	qr_byte_t *buffer = qr_to_buffer(qr, QR_FMT_BMP, &wsize);
 	if (!buffer){
 		lua_pushnil(L);
 		lua_pushfstring(L, "[ERROR]: %s", qrGetErrorInfo(qr));
@@ -124,37 +123,7 @@ static int lwriteSVG(lua_State *L) {
 		return luaL_error(L, "[ERROR]: Can't create QR object.");
 
 	int wsize = 0;
-	//两个5分别表示：像素之间的距离和二维码图片的放大倍数，范围都是1-16
-	qr_byte_t *buffer = qrSymbolToSVG(qr, 5, 5, &wsize);
-	if (!buffer){
-		lua_pushnil(L);
-		lua_pushfstring(L, "[ERROR]: %s", qrGetErrorInfo(qr));
-		qrDestroy(qr);
-		return 2;
-	}
-
-	qrDestroy(qr);
-
-	int ok = qr_writefile(filename, (char *)buffer, wsize);
-	if (!ok) {
-		lua_pushnil(L);
-		lua_pushfstring(L, "[ERROR]: Failed to write to file[%s].", filename);
-		return 2;
-	}
-
-	return 1;
-}
-
-static int lwritePBM(lua_State *L) {
-	const char* filename = luaL_checkstring(L, 1);
-	size_t tsize = 0;
-	QRCode *qr = qr_init(luaL_checklstring(L, 2, &tsize), &tsize);
-	if (!qr)
-		return luaL_error(L, "[ERROR]: Can't create QR object.");
-
-	int wsize = 0;
-	//两个5分别表示：像素之间的距离和二维码图片的放大倍数，范围都是1-16
-	qr_byte_t *buffer = qrSymbolToPBM(qr, 5, 5, &wsize);
+	qr_byte_t *buffer = qr_to_buffer(qr, QR_FMT_SVG, &wsize);
 	if (!buffer){
 		lua_pushnil(L);
 		lua_pushfstring(L, "[ERROR]: %s", qrGetErrorInfo(qr));
@@ -183,8 +152,7 @@ static int lwriteJSON(lua_State *L) {
 	}
 
 	int wsize = 0;
-	//两个5分别表示：像素之间的距离和二维码图片的放大倍数，范围都是1-16
-	qr_byte_t *buffer = qrSymbolToJSON(qr, 5, 5, &wsize);
+	qr_byte_t *buffer = qr_to_buffer(qr, QR_FMT_JSON, &wsize);
 	if (!buffer){
 		lua_pushnil(L);
 		lua_pushfstring(L, "[ERROR]: %s", qrGetErrorInfo(qr));
@@ -248,10 +216,8 @@ LUAMOD_API int luaopen_qr(lua_State* L) {
 	luaL_checkversion(L);
 	luaL_Reg qr_libs[] = {
 		{ "toPNG", lwritePNG },
-		{ "toPNG", lwritePNG },
 		{ "toBMP", lwriteBMP },
 		{ "toSVG", lwriteSVG },
-		{ "toPBM", lwritePBM },
 		{ "toJSON", lwriteJSON },
 
 		// 全局配置
