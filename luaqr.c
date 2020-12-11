@@ -32,8 +32,10 @@ static inline QRCode* qr_init(const char* text, size_t *tsize) {
 
 static inline int qr_writefile(const char * filename, char* buf, size_t bsize) {
 	FILE *fp = fopen(filename, "wb");
-	if (!fp) 
+	if (!fp) {
+		free(buf);
 		return 0;
+	}
 	// 写入内容到文件
 	fwrite((const char*)buf, 1, bsize, fp); fflush(fp); fclose(fp); free(buf);
 	return 1;
