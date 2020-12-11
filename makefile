@@ -17,7 +17,7 @@ DLL = -lcore -llua -lz
 
 build:
 	@$(CC) -o qr.so luaqr.c qr.c qrcnv.c qrcnv_bmp.c qrcnv_png.c qrcnv_svg.c qrcnv_tiff.c $(INCLUDES) $(LIBS) $(CFLAGS) $(DLL)
-	@mv *.so ../../
+	@mv *.so ../
 
 clean:
 	rm -rf main qr.so
