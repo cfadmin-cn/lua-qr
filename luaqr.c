@@ -48,8 +48,6 @@ static inline qr_byte_t* qr_to_buffer(QRCode* qr, qr_format_t qr_fmt, int *wsize
 			return qrSymbolToPNG(qr, MAX_SEP, MAX_MAG, wsize);
 		case QR_FMT_BMP:
 			return qrSymbolToBMP(qr, MAX_SEP, MAX_MAG, wsize);
-		case QR_FMT_PBM:
-			return qrSymbolToPBM(qr, MAX_SEP, MAX_MAG, wsize);
 		case QR_FMT_SVG:
 			return qrSymbolToSVG(qr, MAX_SEP, MAX_MAG, wsize);
 		case QR_FMT_JSON:
