@@ -31,27 +31,27 @@
 
   * qr.toPNG(filename, text)
 
-	* qr.toSVG(filename, text)
+  * qr.toSVG(filename, text)
 
-	* qr.toBMP(filename, text)
+  * qr.toBMP(filename, text)
 
-	* qr.toJSON(filename, text)
+  * qr.toJSON(filename, text)
 
-	The above `API` is used to write the content of the `text` parameter into the path file indicated by `filename` in the specified format, the format can be: `JSON`/`PNG`/`SVG`/`BMP`;
+  The above `API` is used to write the content of the `text` parameter into the path file indicated by `filename` in the specified format, the format can be: `JSON`/`PNG`/`SVG`/`BMP`;
 
-	* qr.setMAG(mag) - QR Image margins.
+  * qr.setMAG(mag) - QR Image margins.
 
-	* qr.setSEP(sep) - QR Pixel magnification.
+  * qr.setSEP(sep) - QR Pixel magnification.
 
-	* qr.setVERSION(version) - QR Version.
+  * qr.setVERSION(version) - QR Version.
 
-	* qr.setLEVEL(level) - QR Error correction level.
+  * qr.setLEVEL(level) - QR Error correction level.
 
-	* qr.setTYPE(type) - QR Mask pattern type.
+  * qr.setTYPE(type) - QR Mask pattern type.
 
-	The above method is a global configuration, and developers will use the above method to modify it will take effect globally.
+  The above method is a global configuration, and developers will use the above method to modify it will take effect globally.
 
-	Please refer to the `test.lua` file for specific sample codes.
+  Please refer to the `test.lua` file for specific sample codes.
 
 ## LICENSE
 
