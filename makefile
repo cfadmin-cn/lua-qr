@@ -11,7 +11,7 @@ default :
 CFLAGS = -O3 -w -shared -fPIC
 CC = cc
 
-INCLUDES = -I./ -I../ -I../../ -I../../../ -I/usr/local/include
+INCLUDES = -I./ -I../ -I../../ -I../../../ -I../../src -I/usr/local/include
 LIBS = -L./ -L../ -L../../ -L../../../ -L/usr/local/lib
 DLL = -lcore -llua -lz
 

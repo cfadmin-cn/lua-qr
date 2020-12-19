@@ -1,6 +1,6 @@
 #define LUA_LIB
 
-#include "../../src/core.h"
+#include <core.h>
 #include "qr.h"
 
 static int QR_VERSION = 10;
