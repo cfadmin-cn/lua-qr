@@ -13,7 +13,7 @@ CC = cc
 
 INCLUDES = -I./ -I../ -I../../ -I../../../ -I../../src -I/usr/local/include
 LIBS = -L./ -L../ -L../../ -L../../../ -L/usr/local/lib
-DLL = -lcore -llua -lz
+DLL = -lcore -lz
 
 build:
 	@$(CC) -o qr.so luaqr.c qr.c qrcnv.c qrcnv_bmp.c qrcnv_png.c qrcnv_svg.c qrcnv_tiff.c $(INCLUDES) $(LIBS) $(CFLAGS) $(DLL)
