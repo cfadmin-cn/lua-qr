@@ -50,6 +50,8 @@
   * qr.setTYPE(type) - QR Mask pattern type.
 
   The above method is a global configuration, and developers will use the above method to modify it will take effect globally.
+  
+## TEST
 
   Please refer to the `test.lua` file for specific sample codes.
 
